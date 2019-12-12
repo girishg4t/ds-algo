@@ -1,0 +1,69 @@
+[
+    {
+        "category": "laptop",
+        "rating": 1,
+        "revenue": 10000,
+        "tax": 100,
+        "month": "jan",
+        "year": 2019,
+        "day": 2
+    },
+    {
+        "category": "laptop",
+        "rating": 1,
+        "revenue": 20000,
+        "tax": 200,
+        "month": "jan",
+        "year": 2019,
+        "day": 19
+    },
+    {
+        "category": "laptop",
+        "rating": 1,
+        "revenue": 30000,
+        "tax": 300,
+        "month": "jan",
+        "year": 2019,
+        "day": 9
+    },
+    {
+        "category": "laptop",
+        "rating": 2,
+        "revenue": 10000,
+        "tax": 100,
+        "month": "feb",
+        "year": 2019
+    },
+    {
+        "category": "ipad",
+        "rating": 2,
+        "revenue": 20000,
+        "tax": 200,
+        "month": "feb",
+        "year": 2019
+    },
+    {
+        "category": "camera",
+        "rating": 3,
+        "revenue": 30000,
+        "tax": 300,
+        "month": "mar",
+        "year": 2019
+    },
+    {
+        "category": "laptop",
+        "rating": 4,
+        "revenue": 40000,
+        "tax": 400,
+        "month": "apr",
+        "year": 2020
+    },
+    {
+        "category": "ipad",
+        "rating": 5,
+        "revenue": 50000,
+        "tax": 500,
+        "month": "jan",
+        "year": 2020
+    }
+]
