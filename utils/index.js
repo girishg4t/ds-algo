@@ -5,12 +5,6 @@ const groupBy = function (xs, key) {
   }, {});
 };
 
-const transformDataToObj = function (key, data) {
-  return {
-    [key]: data
-  };
-}
-
 const sum = function (productArray, column) {
   return productArray.reduce((total, product) => {
       return total + product[column]

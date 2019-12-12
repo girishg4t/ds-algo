@@ -1,5 +1,5 @@
 const productSales = require('./Data/ProductSales.json');
-const { groupBy, transformDataToObj, sum } = require('./utils');
+const { groupBy, sum } = require('./utils');
 
 const mapFunctions = {
     'sum': sum
