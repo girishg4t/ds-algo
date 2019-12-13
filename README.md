@@ -1,16 +1,11 @@
 ### Data Transformar
+Given  
+•  input -  array of json objects  
+•  input - pivot columns  
+•  input - summarization columns and functions  
+•  output - a pivot table  
 
-Given 
-
-•  input -  array of json objects
-
-•  input - pivot columns
-
-•  input - summarization columns and functions
-
-•  output - a pivot table
-
-
+  
 ```
                Jan              Feb            March
           Revenue Tax      Revenue Tax     Revenue Tax
@@ -43,12 +38,14 @@ Given
  }
  ```
  
- If more than one dimension/groupBy given
- e.g.
-  dimension= ['category', 'rating']
-  groupBy = ['year', 'month']
-  measures = [{name: 'revenue', fun: 'sum'},{name: 'tax', fun: 'sum'}]
-  Then output should be like:
+ If more than one dimension/groupBy given  
+
+ e.g.  
+  dimension= ['category', 'rating']  
+  groupBy = ['year', 'month']  
+  measures = [{name: 'revenue', fun: 'sum'},{name: 'tax', fun: 'sum'}]  
+
+  Then output should be like:  
 
   ```
                  Jan19               Feb19       ....          Jan20
@@ -62,7 +59,9 @@ Given
  Ipad-1     30000    200        4000    500      ....    13000     700
  Ipad-2     20000    300        5000    400      ....    33000     600
  Ipad-3     60000    100        6000    300      ....    12300     450
+```
  Output JSON:
+```
     {
         category : {
             laptop: {

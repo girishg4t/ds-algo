@@ -34,7 +34,7 @@ function findArrayRecursivelyandDoCallback(products, options, cb) {
     return products;
 }
 
-function dataTransformarTwoDimension(productSales) {
+function twoDimensionDataTransformar(productSales) {
     const dimensions = ['category', 'rating'];
     let result = { [dimensions[0]]: productSales }
     dimensions.forEach((dimension) => {
@@ -54,7 +54,7 @@ function dataTransformarTwoDimension(productSales) {
     return result;
 }
 
-function dataTransformarOneDimension(productSales) {
+function singleDimentsionDataTransformar(productSales) {
     const dimensions = ['category'];
     let result = { [dimensions[0]]: productSales }
     dimensions.forEach((dimension) => {
@@ -73,7 +73,8 @@ function dataTransformarOneDimension(productSales) {
     result = findArrayRecursivelyandDoCallback(result, options, aggregateData)
     return result;
 }
+
 console.log("***********************One Dimenstion*******************");
-console.log(JSON.stringify(dataTransformarOneDimension(productSales), null, 2));
+console.log(JSON.stringify(singleDimentsionDataTransformar(productSales), null, 2));
 console.log("\n\n***********************Two Dimenstion*******************");
-console.log(JSON.stringify(dataTransformarTwoDimension(productSales), null, 2));
+console.log(JSON.stringify(twoDimensionDataTransformar(productSales), null, 2));
