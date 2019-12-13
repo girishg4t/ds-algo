@@ -5,52 +5,75 @@ const mapFunctions = {
     'sum': sum
 }
 
-function doSummation(products, measures) {
+function aggregateData(products, key, options) {
+    const transformedDataResult = {};
+    options.measures.forEach((measure) => {
+        const total = mapFunctions[measure.fun](products[key], measure.name);
+        transformedDataResult[measure.name] = total;
+    });
+    return transformedDataResult;
+}
+
+function groupData(products, key, options) {
+    const column = options.column;
+    if (key === column) {
+        return groupBy(products[key], column);
+    } else {
+        return { [column]: groupBy(products[key], column) }
+    }
+}
+
+function findArrayRecursivelyandDoCallback(products, options, cb) {
     Object.keys(products).forEach((key) => {
         if (Array.isArray(products[key])) {
-            const transformedDataResult = {};
-            measures.forEach((measure) => {
-                const total = mapFunctions[measure.fun](products[key], measure.name);
-                transformedDataResult[measure.name] = total;
-            });
-            products[key] = transformedDataResult;
+            products[key] = cb(products, key, options);
         } else {
-            doSummation(products[key], measures);
+            findArrayRecursivelyandDoCallback(products[key], options, cb);
         }
     });
     return products;
 }
 
-function doTransform(dimension, products) {
-    Object.keys(products).forEach((key) => {
-        if (Array.isArray(products[key])) {
-            if (key === dimension) {
-                products[key] = groupBy(products[key], dimension);
-            } else {
-                products[key] = { [dimension]: groupBy(products[key], dimension) }
-            }
-        } else {
-            doTransform(dimension, products[key]);
-        }
-    });
-    return products;
-}
-
-function dataTransformar() {
+function dataTransformarTwoDimension(productSales) {
     const dimensions = ['category', 'rating'];
     let result = { [dimensions[0]]: productSales }
     dimensions.forEach((dimension) => {
-        result = doTransform(dimension, result)
+        const options = { column: dimension };
+        result = findArrayRecursivelyandDoCallback(result, options, groupData);
     });
 
     const groupByColumns = ['year', 'month'];
     groupByColumns.forEach((dimension) => {
-        result = doTransform(dimension, result)
+        const options = { column: dimension };
+        result = findArrayRecursivelyandDoCallback(result, options, groupData);
     });
 
     const measures = [{ name: 'revenue', fun: 'sum' }, { name: 'tax', fun: 'sum' }];
-    result = doSummation(result, measures)
+    const options = { measures: measures };
+    result = findArrayRecursivelyandDoCallback(result, options, aggregateData)
     return result;
 }
 
-console.log(JSON.stringify(dataTransformar(), null, 2));
+function dataTransformarOneDimension(productSales) {
+    const dimensions = ['category'];
+    let result = { [dimensions[0]]: productSales }
+    dimensions.forEach((dimension) => {
+        const options = { column: dimension };
+        result = findArrayRecursivelyandDoCallback(result, options, groupData);
+    });
+
+    const groupByColumns = ['month'];
+    groupByColumns.forEach((dimension) => {
+        const options = { column: dimension };
+        result = findArrayRecursivelyandDoCallback(result, options, groupData);
+    });
+
+    const measures = [{ name: 'revenue', fun: 'sum' }, { name: 'tax', fun: 'sum' }];
+    const options = { measures: measures };
+    result = findArrayRecursivelyandDoCallback(result, options, aggregateData)
+    return result;
+}
+console.log("***********************One Dimenstion*******************");
+console.log(JSON.stringify(dataTransformarOneDimension(productSales), null, 2));
+console.log("\n\n***********************Two Dimenstion*******************");
+console.log(JSON.stringify(dataTransformarTwoDimension(productSales), null, 2));
