@@ -10,4 +10,4 @@ const sum = function (productArray, column) {
       return total + product[column]
   }, 0);
 }
-module.exports = { groupBy, transformDataToObj, sum }
+module.exports = { groupBy, sum }
