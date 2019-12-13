@@ -1,10 +1,10 @@
 ### Data Transformar
 
 Given 
-// input -  array of json objects
-// input - pivot columns
-// input - summarization columns and functions
-// output - a pivot table
+•  input -  array of json objects
+•  input - pivot columns
+•  input - summarization columns and functions
+•  output - a pivot table
 
 
 ```
