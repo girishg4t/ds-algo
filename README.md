@@ -1,4 +1,11 @@
 ### Data Transformar
+
+This project is to demonstrate for given input what will will be the output as per the example below, the logic is in dataTransformar.js. To execute the project do  
+
+```
+node dataTransformar.js
+```
+
 Given  
 •  input -  array of json objects  
 •  input - pivot columns  
