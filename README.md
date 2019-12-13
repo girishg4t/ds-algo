@@ -40,7 +40,9 @@ Given
             }
         }
      }
- }```
+ }
+ ```
+ 
  If more than one dimension/groupBy given
  e.g.
   dimension= ['category', 'rating']
@@ -89,4 +91,5 @@ Given
             }
         }
     }
-}```
+}
+```
