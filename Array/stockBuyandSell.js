@@ -1,5 +1,5 @@
 function stockBuyandSell() {
-    let arr = [4, 2, 2, 2, 4]
+    let arr = [7, 1, 5, 3, 6, 4]
     let low = arr[0]
     let heigh = arr[0]
     for (let i = 1; i < arr.length; i++) {
